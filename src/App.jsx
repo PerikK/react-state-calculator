@@ -76,6 +76,12 @@ function App() {
     if (e.target.innerText === 'Clear') {
       setResult(0)
     }
+    if (e.target.innerText === 'Clear All') {
+      setResult(0)
+      setFirstNum(0)
+      setSecondNum(0)
+    }
+    
   }
 
 
@@ -139,6 +145,7 @@ function App() {
           <button onClick={handleResult}>=</button>
           <button onClick={handleResultStorage}>Store</button>
           <button onClick={handleResult}>Clear</button>
+          <button onClick={handleResult}>Clear All</button>
         </div>
       </div>
     </div>
