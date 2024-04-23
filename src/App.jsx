@@ -12,7 +12,7 @@ function App() {
 
   function handleFirstNum(e) {
     if (e.target.innerText === "Clear") {
-      setFirstNum(0)
+      setFirstNum('0')
       return
     }
     if (Number(firstNum) === 0) {
@@ -28,7 +28,32 @@ function App() {
       }
     }
   }
-    console.log(firstNum,typeof(firstNum))
+  // console.log(firstNum, typeof (firstNum))
+  
+    function handleSecondNum(e) {
+    if (e.target.innerText === "Clear") {
+      setSecondNum('0')
+      return
+    }
+    if (Number(secondNum) === 0) {
+    setSecondNum(e.target.innerText)
+    } else {
+      setSecondNum(secondNum + e.target.innerText)
+    }
+    if (e.target.innerText === ".") {
+      if (secondNum.includes('.')) {
+        return
+      } else {
+        setSecondNum(secondNum + e.target.innerText)
+      }
+    }
+  }
+
+  function handleOperation(e) {
+    setOperator(e.target.innerText)
+  }
+
+
 
   return (
     <div className="calculator">
@@ -51,29 +76,30 @@ function App() {
       </div>
 
       <div className="panel">
-        <p>+</p>
+        <p>{operator}</p>
         <div className="numbers">
-          <button>+</button>
-          <button>-</button>
-          <button>*</button>
-          <button>÷</button>
+          <button onClick={handleOperation}>+</button>
+          <button onClick={handleOperation}>-</button>
+          <button onClick={handleOperation}>*</button>
+          <button onClick={handleOperation}>÷</button>
         </div>
       </div>
 
       <div className="panel">
-        <p>0</p>
+        <p>{secondNum}</p>
         <div className="numbers">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>0</button>
-          <button>Clear</button>
+          <button onClick={handleSecondNum}>1</button>
+          <button onClick={handleSecondNum}>2</button>
+          <button onClick={handleSecondNum}>3</button>
+          <button onClick={handleSecondNum}>4</button>
+          <button onClick={handleSecondNum}>5</button>
+          <button onClick={handleSecondNum}>6</button>
+          <button onClick={handleSecondNum}>7</button>
+          <button onClick={handleSecondNum}>8</button>
+          <button onClick={handleSecondNum}>9</button>
+          <button onClick={handleSecondNum}>0</button>
+          <button onClick={handleSecondNum}>.</button>
+          <button onClick={handleSecondNum}>Clear</button>
         </div>
       </div>
       <div className="panel answer">
