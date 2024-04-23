@@ -8,6 +8,7 @@ function App() {
   const [secondNum, setSecondNum] = useState('0')
   const [operator, setOperator] = useState('+')
   const [result, setResult] = useState('0')
+  const [storeResult, setStoreResult] = useState(0)
 
 
   function handleFirstNum(e) {
@@ -26,6 +27,9 @@ function App() {
       } else {
         setFirstNum(firstNum + e.target.innerText)
       }
+    }
+    if (e.target.innerText === "Recall") {
+      setFirstNum(storeResult)
     }
   }
   // console.log(firstNum, typeof (firstNum))
@@ -46,6 +50,9 @@ function App() {
       } else {
         setSecondNum(secondNum + e.target.innerText)
       }
+      }
+      if (e.target.innerText === "Recall") {
+        setSecondNum(storeResult)
     }
   }
 
@@ -53,6 +60,24 @@ function App() {
     setOperator(e.target.innerText)
   }
 
+  function handleResult() {
+    if (operator === '+') {
+      setResult(Number(firstNum) + Number(secondNum))
+    }
+    if (operator === '-') {
+      setResult(Number(firstNum) - Number(secondNum))
+    }
+    if (operator === '*') {
+      setResult(Number(firstNum) * Number(secondNum))
+    }
+    if (operator === '÷') {
+      setResult(Number(firstNum) / Number(secondNum))
+    }
+  }
+
+  function handleResultStorage() {
+    setStoreResult(result)
+  }
 
 
   return (
@@ -72,6 +97,7 @@ function App() {
           <button onClick={handleFirstNum}>0</button>
           <button onClick={handleFirstNum}>.</button>
           <button onClick={handleFirstNum}>Clear</button>
+          <button onClick={handleFirstNum}>Recall</button>
         </div>
       </div>
 
@@ -100,12 +126,14 @@ function App() {
           <button onClick={handleSecondNum}>0</button>
           <button onClick={handleSecondNum}>.</button>
           <button onClick={handleSecondNum}>Clear</button>
+          <button onClick={handleSecondNum}>Recall</button>
         </div>
       </div>
       <div className="panel answer">
-        <p>0</p>
+        <p>{result}</p>
         <div>
-          <button>=</button>
+          <button onClick={handleResult}>=</button>
+          <button onClick={handleResultStorage}>Store</button>
         </div>
       </div>
     </div>
