@@ -60,7 +60,7 @@ function App() {
     setOperator(e.target.innerText)
   }
 
-  function handleResult() {
+  function handleResult(e) {
     if (operator === '+') {
       setResult(Number(firstNum) + Number(secondNum))
     }
@@ -73,7 +73,11 @@ function App() {
     if (operator === '÷') {
       setResult(Number(firstNum) / Number(secondNum))
     }
+    if (e.target.innerText === 'Clear') {
+      setResult(0)
+    }
   }
+
 
   function handleResultStorage() {
     setStoreResult(result)
@@ -134,6 +138,7 @@ function App() {
         <div>
           <button onClick={handleResult}>=</button>
           <button onClick={handleResultStorage}>Store</button>
+          <button onClick={handleResult}>Clear</button>
         </div>
       </div>
     </div>
