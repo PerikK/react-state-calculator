@@ -144,7 +144,7 @@ function App() {
         <div>
           <button onClick={handleResult}>=</button>
           <button onClick={handleResultStorage}>Store</button>
-          <button onClick={handleResult}>Clear</button>
+          <button style={{ marginTop: '50px'}} onClick={handleResult}>Clear</button>
           <button onClick={handleResult}>Clear All</button>
         </div>
       </div>
